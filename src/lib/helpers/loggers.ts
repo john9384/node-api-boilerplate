@@ -39,6 +39,23 @@ const transports = [
 		filename: 'src/logs/error.log',
 		level: 'error',
 	}),
+	new winston.transports.File({
+		filename: 'src/logs/debug.log',
+		level: 'warn',
+	}),
+	new winston.transports.File({
+		filename: 'src/logs/info.log',
+		level: 'info',
+	}),
+	new winston.transports.File({
+		filename: 'src/logs/http.log',
+		level: 'http',
+	}),
+	new winston.transports.File({
+		filename: 'src/logs/debug.log',
+		level: 'debug',
+	}),
+
 	new winston.transports.File({ filename: 'src/logs/all.log' }),
 ]
 
