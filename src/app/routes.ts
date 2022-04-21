@@ -5,7 +5,7 @@ import config from '../config'
 
 const router = express.Router()
 
-const API_PREFIX = config.API_PREFIX
+const { API_PREFIX } = config
 
 router.use(`/${API_PREFIX}/auth`, authRoutes)
 router.use(`/${API_PREFIX}/user`, userRoutes)

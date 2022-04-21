@@ -4,6 +4,6 @@ import * as userController from '../controllers'
 
 const router = Router()
 
-router.post('/create', catchErrors(userController.getCurrentUser))
+router.get('/', catchErrors(userController.getCurrentUser))
 
 export { router as userRoutes }

@@ -1,7 +1,7 @@
 import 'reflect-metadata'
 import { DataSource } from 'typeorm'
 
-export const DatabaseConnection = new DataSource({
+const DatabaseConnection = new DataSource({
   type: 'mysql',
   host: 'localhost',
   port: 3306,
@@ -14,5 +14,7 @@ export const DatabaseConnection = new DataSource({
   entities: ['src/db/entities/**/*.ts'],
   migrations: ['src/db/migrations/**/*.ts'],
   subscribers: ['src/db/subscribers/**/*.ts'],
-  migrationsTableName: 'migrations'
+  migrationsTableName: 'migrations',
 })
+
+export default DatabaseConnection

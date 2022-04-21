@@ -1,9 +1,7 @@
 import { UNAUTHORIZED } from '../constants/http-status'
-import * as jwtHelper from '../helpers/jwt'
+import { jwtDecode } from '../helpers/jwt'
 import { IRequest, IResponse, INext } from '../../app/types/http'
 import { CustomError } from '../helpers/error'
-import { IPayload } from '../../app/types/jwt-types'
-import { JwtPayload } from 'jsonwebtoken'
 
 const isAuthenticated = async (req: IRequest, res: IResponse, next: INext) => {
 	if (!req.header('Authorization')) {
@@ -16,7 +14,7 @@ const isAuthenticated = async (req: IRequest, res: IResponse, next: INext) => {
 	const token: string = req?.header('Authorization')?.split(' ')[1] || ''
 
 	try {
-		const decoded: any = jwtHelper.decode(token)
+		const decoded: any = jwtDecode(token)
 		req.user = {
 			id: decoded.userId,
 			email: decoded.email,

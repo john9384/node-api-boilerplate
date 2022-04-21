@@ -3,12 +3,12 @@ import dotenv from 'dotenv'
 import fs from 'fs'
 import Logger from '../lib/helpers/loggers'
 
-if (process.env.ENVIRONMENT == 'development' && !fs.existsSync('.env')) {
+if (process.env.ENVIRONMENT === 'development' && !fs.existsSync('.env')) {
   Logger.error('.env file not found')
 }
 
 dotenv.config({
-  path: path.join(__dirname, '../../.env')
+  path: path.join(__dirname, '../../.env'),
 })
 
 export default {
@@ -20,5 +20,5 @@ export default {
   CRYPTO_SECRET_KEY: process.env.CRYPTO_SECRET_KEY,
   JWT_SECRET: process.env.JWT_SECRET,
   JWT_TOKEN_TYPE: process.env.JWT_TOKEN_TYPE,
-  PORT: process.env.PORT
+  PORT: process.env.PORT,
 }

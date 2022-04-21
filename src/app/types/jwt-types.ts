@@ -1,6 +1,6 @@
 import { JwtPayload } from 'jsonwebtoken'
 
 export interface IPayload {
-	userId: string
-	email: string
+	userId?: string
+	email?: string
 }

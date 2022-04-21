@@ -4,6 +4,9 @@ import { OK } from '../../../lib/constants/http-status'
 
 export const getCurrentUser = async (req: IRequest, res: IResponse) => {
 	const userId = req.user?.id
+	if (!userId) {
+		throw new Error('Hello there')
+	}
 
 	const responseData = {}
 	return res.status(OK).send(
