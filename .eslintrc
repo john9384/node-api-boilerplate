@@ -20,6 +20,7 @@
 		"__ROUTE__": true
 	},
 	"rules": {
+		"arrow-parens": ["warn", "as-needed"],
 		"array-bracket-spacing": "off",
 		"block-spacing": "off",
 		"camelcase": ["warn", { "properties": "always" }],
@@ -30,14 +31,14 @@
 		"linebreak-style": "off",
 		"indent": [
 			"warn",
-			2,
+			"tab",
 			{
 				"SwitchCase": 1
 			}
 		],
 		"@typescript-eslint/indent": [
 			"warn",
-			2,
+			"tab",
 			{
 				"SwitchCase": 1
 			}
@@ -52,9 +53,11 @@
 		],
 		"max-statements-per-line": ["warn", { "max": 1 }],
 		"new-cap": "warn",
+		"newline-per-chained-call": "off",
 		"no-case-declarations": "off",
 		"no-duplicate-imports": ["warn", { "includeExports": true }],
 		"no-empty-function": "warn",
+		"@typescript-eslint/no-empty-interface": "warn",
 		"no-eval": "warn",
 		"import/no-extraneous-dependencies": [
 			"error",
@@ -93,6 +96,7 @@
 		"object-curly-spacing": ["warn", "always"],
 		"prefer-const": "off",
 		"quotes": ["warn", "single"],
+		"@typescript-eslint/quotes": ["warn", "single"],
 		"semi": ["warn", "never"],
 		"@typescript-eslint/semi": ["warn", "never"]
 	},

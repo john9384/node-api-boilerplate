@@ -8,34 +8,34 @@ import app from '../app'
 import DatabaseConnection from '../db/data-source'
 import { IError } from '../lib/helpers/error'
 
-const PORT = config.PORT || 4000
+const PORT = config.APP_PORT || 4000
 
 if (cluster.isPrimary) {
-  const cpuCoreCount = os.cpus().length
+	const cpuCoreCount = os.cpus().length
 
-  for (let index = 0; index < cpuCoreCount; index++) {
-    cluster.fork()
-  }
-  cluster.on('exit', (worker) => {
-    Logger.warn(`Worker ${worker.id} died'`)
-    Logger.warn('Starting a new one ...')
-    cluster.fork()
-  })
+	for (let index = 0; index < cpuCoreCount; index++) {
+		cluster.fork()
+	}
+	cluster.on('exit', worker => {
+		Logger.warn(`Worker ${worker.id} died'`)
+		Logger.warn('Starting a new one ...')
+		cluster.fork()
+	})
 } else {
-  DatabaseConnection.initialize()
-    .then(() => {
-      Logger.info('------- Database Connected -------')
-    })
-    .catch((error: IError) => {
-      Logger.error('------ Database Connection Failed -------')
-      Logger.error(error)
-    })
+	DatabaseConnection.initialize()
+		.then(() => {
+			Logger.info('------- Database Connected -------')
+		})
+		.catch((error: IError) => {
+			Logger.error('------ Database Connection Failed -------')
+			Logger.error(error)
+		})
 
-  new http.Server(app).listen(PORT, () => {
-    Logger.info(`
+	new http.Server(app).listen(PORT, () => {
+		Logger.info(`
   -------------------------------------------
     ${config.APP_NAME?.toUpperCase()} Server listening on port ${PORT}
   -------------------------------------------
   `)
-  })
+	})
 }

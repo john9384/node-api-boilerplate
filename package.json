@@ -14,6 +14,9 @@
 		"lint": "eslint src/**/*.ts",
 		"lint:fix": "eslint src/**/*.ts --fix",
 		"typeorm": "typeorm-ts-node-esm",
+		"show-migration": "typeorm-ts-node-esm -d src/db/data-source.ts migration:show",
+		"run-migration": "typeorm-ts-node-esm -d src/db/data-source.ts migration:run",
+		"revert-migration": "typeorm-ts-node-esm -d src/db/data-source.ts migration:revert",
 		"list-routes": "ts-node src/scripts/route-list.ts"
 	},
 	"husky": {

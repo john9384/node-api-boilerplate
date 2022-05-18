@@ -14,6 +14,7 @@ dotenv.config({
 const config = {
 	API_PREFIX: process.env.API_PREFIX,
 	APP_NAME: process.env.APP_NAME,
+	APP_PORT: process.env.APP_PORT,
 	ENVIRONMENT: process.env.NODE_ENV,
 	CRYPTO_ENCRYPTION_METHOD: process.env.CRYPTO_ENCRYPTION_METHOD,
 	CRYPTO_SECRET_IV: process.env.CRYPTO_SECRET_IV,
@@ -26,7 +27,6 @@ const config = {
 	DB_PASSWORD: process.env.DB_PASSWORD,
 	JWT_SECRET: process.env.JWT_SECRET,
 	JWT_TOKEN_TYPE: process.env.JWT_TOKEN_TYPE,
-	PORT: process.env.PORT,
 }
 
 export default config
