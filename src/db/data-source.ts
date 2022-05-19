@@ -19,4 +19,3 @@ const DatabaseConnection = new DataSource({
 })
 
 export default DatabaseConnection
-config

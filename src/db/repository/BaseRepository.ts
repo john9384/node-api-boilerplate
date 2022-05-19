@@ -12,7 +12,7 @@ class BaseRepository {
 		return entity
 	}
 
-	async fetchOne<TQuery, TReturn>(query: TQuery): Promise<TReturn> {
+	async fetchOne<TQuery, TReturn>(query: TQuery): Promise<TReturn | null> {
 		const entity = await this.Model.find(query)
 		return entity
 	}
@@ -35,7 +35,7 @@ class BaseRepository {
 	}
 
 	async destroy<TQuery>(query: TQuery): Promise<boolean> {
-		this.Model.remove(query)
+		this.Model.delete(query)
 
 		return true
 	}
