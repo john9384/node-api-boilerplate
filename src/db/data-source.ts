@@ -3,7 +3,7 @@ import { DataSource } from 'typeorm'
 import config from '../config/index'
 
 const DatabaseConnection = new DataSource({
-	type: 'mysql',
+	type: 'postgres',
 	host: config.DB_HOST,
 	port: Number(config.DB_PORT),
 	username: config.DB_USERNAME,
@@ -12,7 +12,7 @@ const DatabaseConnection = new DataSource({
 	synchronize: false,
 	logging: true,
 	cache: true,
-	entities: ['src/db/entities/**/*.ts'],
+	entities: ['src/models/**/*.ts'],
 	migrations: ['src/db/migrations/**/*.ts'],
 	subscribers: ['src/db/subscribers/**/*.ts'],
 	migrationsTableName: 'migrations',
