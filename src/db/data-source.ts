@@ -1,6 +1,6 @@
 import 'reflect-metadata'
 import { DataSource } from 'typeorm'
-import config from '../config/index'
+import config from '../config'
 
 const DatabaseConnection = new DataSource({
 	type: 'postgres',

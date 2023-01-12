@@ -9,6 +9,7 @@ import { BAD_REQUEST } from '../../../lib/constants/http-status'
 
 export const signup = async (formData: ISignup) => {
 	validateFormData(VSignup, formData)
+	// eslint-disable-next-line no-param-reassign
 	formData.password = await bcryptEncode(formData.password)
 
 	const newUser = await userService.createUser(formData)
@@ -33,6 +34,9 @@ export const login = async (formData: ILogin) => {
 	}
 
 	const encodedData = jwtEncode({ userId: user?.id, email: user?.email })
+
+	// const sessionToken = uuid.v4()
+	// setup session data here
 
 	return {
 		email: user?.email,
