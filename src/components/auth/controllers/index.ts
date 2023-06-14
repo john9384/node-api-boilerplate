@@ -1,6 +1,6 @@
 import { IRequest, IResponse } from '../../../app/types/http'
-import { CREATED, OK } from '../../../lib/constants/http-status'
-import { buildResponse } from '../../../lib/utils/response-builder'
+import { CREATED, OK } from '../../../library/constants/http-status'
+import { buildResponse } from '../../../library/utils/response-builder'
 import * as authService from '../services'
 
 export const signup = async (req: IRequest, res: IResponse) => {

@@ -1,8 +1,8 @@
-import { User } from '../../../db/entities/User'
+import { User } from '../../../databases/sqldb/entities/User'
 import { ICreateUser, IUpdateUser, IFetchUser } from '../types/dtos'
 import { IUser } from '../types/model'
 
-import BaseRepository from '../../../db/repository/BaseRepository'
+import BaseRepository from '../../../databases/sqldb/repository/BaseRepository'
 
 class UserRepository extends BaseRepository {
 	fetchOneUser = async (query: IFetchUser): Promise<IUser | null> => {

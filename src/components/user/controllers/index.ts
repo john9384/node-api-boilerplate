@@ -1,6 +1,6 @@
 import { IRequest, IResponse } from '../../../app/types/http'
-import { buildResponse } from '../../../lib/utils/response-builder'
-import { OK } from '../../../lib/constants/http-status'
+import { buildResponse } from '../../../library/utils/response-builder'
+import { OK } from '../../../library/constants/http-status'
 
 export const getCurrentUser = async (req: IRequest, res: IResponse) => {
 	const userId = req.user?.id

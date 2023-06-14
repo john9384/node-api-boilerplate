@@ -1,7 +1,7 @@
 import express from 'express'
 import * as authController from '../controllers'
-import catchErrors from '../../../lib/utils/error-boundary'
-import isAuthenticated from '../../../lib/middlewares/authentication'
+import catchErrors from '../../../library/utils/error-boundary'
+import isAuthenticated from '../../../library/middlewares/authentication'
 
 const router = express.Router()
 

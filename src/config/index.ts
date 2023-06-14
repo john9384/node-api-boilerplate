@@ -1,32 +1,73 @@
-import path from 'path'
 import dotenv from 'dotenv'
-import fs from 'fs'
-import Logger from '../lib/helpers/loggers'
 
-if (process.env.ENVIRONMENT === 'development' && !fs.existsSync('.env')) {
-	Logger.error('.env file not found')
+const envFound = dotenv.config({ path: '.env' })
+
+if (!envFound) {
+	throw new Error("⚠️  Couldn't find .env file  ⚠️")
 }
 
-dotenv.config({
-	path: path.join(__dirname, '../../.env'),
-})
-
 const config = {
-	API_PREFIX: process.env.API_PREFIX,
-	APP_NAME: process.env.APP_NAME,
-	APP_PORT: process.env.APP_PORT,
-	ENVIRONMENT: process.env.NODE_ENV,
-	CRYPTO_ENCRYPTION_METHOD: process.env.CRYPTO_ENCRYPTION_METHOD,
-	CRYPTO_SECRET_IV: process.env.CRYPTO_SECRET_IV,
-	CRYPTO_SECRET_KEY: process.env.CRYPTO_SECRET_KEY,
-	DB_TYPE: process.env.DB_TYPE,
-	DB_HOST: process.env.DB_HOST,
-	DB_PORT: process.env.DB_PORT,
-	DB_NAME: process.env.DB_NAME,
-	DB_USERNAME: process.env.DB_USERNAME,
-	DB_PASSWORD: process.env.DB_PASSWORD,
-	JWT_SECRET: process.env.JWT_SECRET,
-	JWT_TOKEN_TYPE: process.env.JWT_TOKEN_TYPE,
+	appName: process.env.APP_NAME,
+	appHost: process.env.APP_HOST,
+	port: Number(process.env.PORT),
+	dbURI: process.env.MONGODB_URI,
+	jwtSecret: process.env.JWT_SECRET,
+	tokenType: process.env.JWT_TOKEN_TYPE,
+	tokenExpiryInHour: Number(process.env.TOKEN_EXPIRY_TIME_IN_HOUR || 1),
+	tokenExpiryInMinutes: Number(process.env.TOKEN_EXPIRY_TIME_IN_MINUTE || 15),
+	logs: {
+		level: process.env.LOG_LEVEL || 'silly',
+		directory: process.env.LOG_DIRECTORY,
+	},
+	api: {
+		base: process.env.API_BASE,
+		prefix: process.env.API_PREFIX,
+	},
+	frontend: {
+		base: process.env.FRONTEND_BASE,
+		oauthRedirect: process.env.FRONTEND_OAUTH_REDIRECT,
+	},
+	aws: {
+		accessId: process.env.AWS_ACCESS_ID,
+		accessSecret: process.env.AWS_ACCESS_SECRET,
+		region: process.env.AWS_REGION,
+		signature: process.env.AWS_SIGNATURE_V,
+		iconBucketUrl: process.env.AWS_ICON_BUCKET_URL,
+	},
+	sendgrid: {
+		apiKey: String(process.env.SENDGRID_API_KEY),
+	},
+	sendChamp: {
+		baseUrl: String(process.env.SENDCHAMP_BASE_URL),
+		apiKey: String(process.env.SENDCHAMP_API_KEY),
+		senderName: String(process.env.SENDCHAMP_SENDER_NAME),
+		smsRoute: String(process.env.SENDCHAMP_ROUTE),
+	},
+	tokenInfo: {
+		accessTokenValidityDays: Number(process.env.ACCESS_TOKEN_VALIDITY_DAYS),
+		refreshTokenValidityDays: Number(process.env.REFRESH_TOKEN_VALIDITY_DAYS),
+		issuer: process.env.TOKEN_ISSUER || '',
+		audience: process.env.TOKEN_AUDIENCE || '',
+	},
+	rabbitMQ: {
+		host: String(process.env.RABBITMQ_HOST),
+		closeConnectionTimeout:
+			Number(process.env.CLOSE_CONNECTION_TIMEOUT) || 1000,
+	},
+	cloudinary: {
+		cloudinaryName: process.env.CLOUDINARY_NAME,
+		cloudinaryApiKey: process.env.CLOUDINARY_API_KEY,
+		cloudinaryApiSecret: process.env.CLOUDINARY_API_SECRET,
+	},
+	googleOauth: {
+		clientId: process.env.GOOGLE_CLIENT_ID,
+		clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+	},
+	paystack: {
+		baseUrl: process.env.PAYSTACK_BASE_URL,
+		secret: process.env.PAYSTACK_SECRET,
+		redirect: process.env.PAYSTACK_REDIRECT,
+	},
 }
 
 export default config

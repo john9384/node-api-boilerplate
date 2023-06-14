@@ -2,11 +2,11 @@ import 'reflect-metadata'
 import http from 'http'
 import cluster from 'cluster'
 import os from 'os'
-import Logger from '../lib/helpers/loggers'
+import Logger from '../library/helpers/loggers'
 import config from '../config'
 import app from '../app'
-import DatabaseConnection from '../db/data-source'
-import { IError } from '../lib/helpers/error'
+import DatabaseConnection from '../databases/sqldb/data-source'
+import { IError } from '../library/helpers/error'
 
 const PORT = config.APP_PORT || 4000
 

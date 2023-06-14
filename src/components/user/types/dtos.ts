@@ -1,5 +1,5 @@
 import { FindOptionsWhere } from 'typeorm'
-import { User } from '../../../db/entities/User'
+import { User } from '../../../databases/sqldb/entities/User'
 
 export interface ICreateUser {
 	fullName: string

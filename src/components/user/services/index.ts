@@ -1,7 +1,7 @@
 import { IUser } from '../types/model'
 import { ICreateUser, IFetchUser, IUpdateUser } from '../types/dtos'
-import { CustomError } from '../../../lib/helpers/error'
-import { BAD_REQUEST } from '../../../lib/constants/http-status'
+import { CustomError } from '../../../library/helpers/error'
+import { BAD_REQUEST } from '../../../library/constants/http-status'
 import userRepository from '../repository'
 
 export const createUser = async (data: ICreateUser): Promise<IUser> => {

@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import catchErrors from '../../../lib/utils/error-boundary'
+import catchErrors from '../../../library/utils/error-boundary'
 import * as userController from '../controllers'
 
 const router = Router()

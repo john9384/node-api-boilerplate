@@ -1,11 +1,11 @@
 import { userService } from '../../user'
 import { ISignup, ILogin } from '../types/forms'
 import { VSignup, VLogin } from '../utils/validators'
-import { validateFormData } from '../../../lib/utils/validate-form-data'
-import { jwtEncode } from '../../../lib/helpers/jwt'
-import { bcryptCompare, bcryptEncode } from '../../../lib/helpers/bcrypt'
-import { ValidationError } from '../../../lib/helpers/error'
-import { BAD_REQUEST } from '../../../lib/constants/http-status'
+import { validateFormData } from '../../../library/utils/validate-form-data'
+import { jwtEncode } from '../../../library/helpers/jwt'
+import { bcryptCompare, bcryptEncode } from '../../../library/helpers/bcrypt'
+import { ValidationError } from '../../../library/helpers/error'
+import { BAD_REQUEST } from '../../../library/constants/http-status'
 
 export const signup = async (formData: ISignup) => {
 	validateFormData(VSignup, formData)
